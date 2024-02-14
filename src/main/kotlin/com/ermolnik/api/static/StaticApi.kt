@@ -11,5 +11,8 @@ fun Application.staticApi() {
         staticResources("/img_box", "static", index = "img_box.png")
         staticResources("/img_sixnine", "static", index = "img_sixnine.png")
         staticResources("/img_ups", "static", index = "img_ups.png")
+        staticResources("/cover", "static", index = "cover.png")
+        staticResources("/img_maccalany", "static", index = "img_maccalany.png")
+        staticResources("/img_statham", "static", index = "img_statham.png")
     }
 }

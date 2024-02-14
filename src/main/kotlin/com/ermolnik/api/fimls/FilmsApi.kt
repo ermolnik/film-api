@@ -8,7 +8,7 @@ import io.ktor.server.routing.*
 
 fun Application.filmApi() {
     routing {
-        get("/v1/films") {
+        get("api/v1/films") {
             val film = listOf(
                 Film(
                     1,

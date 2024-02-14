@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class Details(
+    val id: Long,
     val name: String,
     val description: String,
     val popularity: Float,
