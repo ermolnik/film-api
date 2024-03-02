@@ -14,9 +14,3 @@ internal data class Details(
     val cover: String,
     val actors: List<Actor> = listOf()
 )
-
-@Serializable
-internal data class Actor(
-    val fullName: String,
-    val photo: String
-)
