@@ -1,4 +1,4 @@
-package com.ermolnik.api.fimls
+package com.ermolnik.api.films
 
 import kotlinx.serialization.Serializable
 

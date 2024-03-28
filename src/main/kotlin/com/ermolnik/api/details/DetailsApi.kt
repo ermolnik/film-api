@@ -1,12 +1,9 @@
 package com.ermolnik.api.details
 
-import com.ermolnik.core.HOST_URL
-import com.ermolnik.core.PORT
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-
 
 fun Application.detailsApi() {
     routing {
@@ -21,15 +18,15 @@ fun Application.detailsApi() {
                         18,
                         "Боевик",
                         "22.04.2021",
-                        "$HOST_URL:$PORT/cover",
+                        "https://upload.wikimedia.org/wikipedia/ru/5/55/%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80%29.png",
                         listOf(
                             Actor(
                                 "Джейсон Стэйтем",
-                                "$HOST_URL:$PORT/img_statham",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                             Actor(
                                 "Холт Маккэллани",
-                                "$HOST_URL:$PORT/img_maccalany",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                         ),
                     )
@@ -44,15 +41,15 @@ fun Application.detailsApi() {
                         18,
                         "Боевик",
                         "22.04.2021",
-                        "$HOST_URL:$PORT/cover",
+                        "https://upload.wikimedia.org/wikipedia/ru/5/55/%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80%29.png",
                         listOf(
                             Actor(
                                 "Джейсон Стэйтем",
-                                "$HOST_URL:$PORT/img_statham",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                             Actor(
                                 "Холт Маккэллани",
-                                "$HOST_URL:$PORT/img_maccalany",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                         ),
                     )
@@ -67,15 +64,15 @@ fun Application.detailsApi() {
                         18,
                         "Мультик",
                         "22.04.2021",
-                        "$HOST_URL:$PORT/cover",
+                        "https://ru.wikipedia.org/wiki/%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9#/media/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_(%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80).png",
                         listOf(
                             Actor(
                                 "Джейсон Стэйтем",
-                                "$HOST_URL:$PORT/img_statham",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                             Actor(
                                 "Холт Маккэллани",
-                                "$HOST_URL:$PORT/img_maccalany",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                         ),
                     )
@@ -90,15 +87,15 @@ fun Application.detailsApi() {
                         12,
                         "Мелодрама",
                         "22.04.2021",
-                        "$HOST_URL:$PORT/cover",
+                        "https://ru.wikipedia.org/wiki/%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9#/media/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_(%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80).png",
                         listOf(
                             Actor(
                                 "Джейсон Стэйтем",
-                                "$HOST_URL:$PORT/img_statham",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                             Actor(
                                 "Холт Маккэллани",
-                                "$HOST_URL:$PORT/img_maccalany",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                         ),
                     )
@@ -113,15 +110,15 @@ fun Application.detailsApi() {
                         16,
                         "Документальный",
                         "22.04.2021",
-                        "$HOST_URL:$PORT/cover",
+                        "https://ru.wikipedia.org/wiki/%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9#/media/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_(%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80).png",
                         listOf(
                             Actor(
                                 "Джейсон Стэйтем",
-                                "$HOST_URL:$PORT/img_statham",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                             Actor(
                                 "Холт Маккэллани",
-                                "$HOST_URL:$PORT/img_maccalany",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                         ),
                     )
@@ -136,15 +133,15 @@ fun Application.detailsApi() {
                         0,
                         "Мультик",
                         "22.04.2021",
-                        "$HOST_URL:$PORT/cover",
+                        "https://ru.wikipedia.org/wiki/%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9#/media/%D0%A4%D0%B0%D0%B9%D0%BB:%D0%93%D0%BD%D0%B5%D0%B2_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_(%D0%BF%D0%BE%D1%81%D1%82%D0%B5%D1%80).png",
                         listOf(
                             Actor(
                                 "Джейсон Стэйтем",
-                                "$HOST_URL:$PORT/img_statham",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                             Actor(
                                 "Холт Маккэллани",
-                                "$HOST_URL:$PORT/img_maccalany",
+                                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Jason_Statham_2018.jpg",
                             ),
                         ),
                     )
