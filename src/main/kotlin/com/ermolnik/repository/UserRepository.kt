@@ -45,6 +45,8 @@ class UserRepository(
                     hashedPassword = it[Users.hashedPassword],
                     fullName = it[Users.fullName],
                     email = it[Users.email],
+                    passwordChangedAt = it[Users.passwordChangedAt],
+                    createdAt = it[Users.createdAt],
                 )
             }
             .singleOrNull()

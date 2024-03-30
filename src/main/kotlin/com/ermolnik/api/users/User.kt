@@ -1,7 +1,9 @@
 package com.ermolnik.api.users
 
+import com.ermolnik.db.serializer.KOffsetDateTimeSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.time.OffsetDateTime
 
 @Serializable
 data class CreateUserRequest(
@@ -19,6 +21,12 @@ data class CreateUserRequest(
 )
 
 @Serializable
+data class CreateUserResponse(
+    @SerialName("username")
+    val username: String,
+)
+
+@Serializable
 data class UserResponse(
     @SerialName("username")
     val username: String,
@@ -27,5 +35,13 @@ data class UserResponse(
     val fullName: String,
 
     @SerialName("email")
-    val email: String
+    val email: String,
+
+    @SerialName("password_changed_at")
+    @Serializable(with = KOffsetDateTimeSerializer::class)
+    val passwordChangedAt: OffsetDateTime,
+
+    @SerialName("created_at")
+    @Serializable(with = KOffsetDateTimeSerializer::class)
+    val createdAt: OffsetDateTime,
 )

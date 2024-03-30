@@ -28,11 +28,8 @@ fun Application.usersApi(database: Database) {
 
             val user = userRepository.create(arg)
 
-            // TODO: Fill from the user returned from the database.
-            val resp = UserResponse(
+            val resp = CreateUserResponse(
                 username = user,
-                fullName = arg.fullName,
-                email = arg.email
             )
             call.respond(HttpStatusCode.Created, resp)
         }
