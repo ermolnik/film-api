@@ -1,6 +1,7 @@
 package com.ermolnik
 
 import com.ermolnik.core.plugins.configureRouting
+import com.ermolnik.db.configureDatabase
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
@@ -12,8 +13,11 @@ class ApplicationTest {
     @Test
     fun testRoot() = testApplication {
         application {
-            configureRouting()
+            val db = configureDatabase()
+
+            configureRouting(db)
         }
+
         client.get("/").apply {
             assertEquals(HttpStatusCode.OK, status)
             assertEquals("Hello World!", bodyAsText())
