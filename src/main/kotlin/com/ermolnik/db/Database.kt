@@ -6,19 +6,19 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 
 fun Application.configureDatabase(): Database {
-    val dbDriver = environment.config.property("ktor.db-driver").getString()
-    val dbSource = environment.config.property("ktor.db-source").getString()
-    val dbUser = environment.config.property("ktor.db-user").getString()
-    val dbPassword = environment.config.property("ktor.db-password").getString()
+    return with(environment.config) {
+        val dbDriver = property("ktor.db-driver").getString()
+        val dbSource = property("ktor.db-source").getString()
+        val dbUser = property("ktor.db-user").getString()
+        val dbPassword = property("ktor.db-password").getString()
 
-    val db = Database.connect(
-        url = dbSource,
-        driver = dbDriver,
-        user = dbUser,
-        password = dbPassword,
-    )
-
-    return db
+        Database.connect(
+            url = dbSource,
+            driver = dbDriver,
+            user = dbUser,
+            password = dbPassword,
+        )
+    }
 }
 
 suspend fun <T> dbQuery(block: suspend () -> T): T =
