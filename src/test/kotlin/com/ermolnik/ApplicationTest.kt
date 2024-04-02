@@ -1,6 +1,6 @@
 package com.ermolnik
 
-import com.ermolnik.core.plugins.configureRouting
+import com.ermolnik.api.configureRouting
 import com.ermolnik.db.configureDatabase
 import io.ktor.client.request.*
 import io.ktor.client.statement.*

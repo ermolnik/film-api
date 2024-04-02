@@ -1,8 +1,7 @@
-package com.ermolnik.core.plugins
+package com.ermolnik.api
 
 import com.ermolnik.api.accounts.accountsApi
-import com.ermolnik.api.details.detailsApi
-import com.ermolnik.api.films.filmApi
+import com.ermolnik.api.movies.moviesApi
 import com.ermolnik.api.static.staticApi
 import com.ermolnik.api.users.usersApi
 import io.ktor.server.application.*
@@ -12,8 +11,7 @@ fun Application.configureRouting(database: Database) {
     usersApi(database)
     accountsApi(database)
 
-    filmApi()
-    detailsApi()
+    moviesApi(database)
 
     staticApi()
 }
