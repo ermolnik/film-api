@@ -5,13 +5,12 @@ import com.ermolnik.api.movies.moviesApi
 import com.ermolnik.api.static.staticApi
 import com.ermolnik.api.users.usersApi
 import io.ktor.server.application.*
-import org.jetbrains.exposed.sql.Database
 
-fun Application.configureRouting(database: Database) {
-    usersApi(database)
-    accountsApi(database)
+fun Application.configureRouting() {
+    usersApi()
+    accountsApi()
 
-    moviesApi(database)
+    moviesApi()
 
     staticApi()
 }

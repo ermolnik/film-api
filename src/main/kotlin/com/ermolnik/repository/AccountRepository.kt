@@ -3,9 +3,10 @@ package com.ermolnik.repository
 import com.ermolnik.db.Account
 import com.ermolnik.db.Accounts
 import com.ermolnik.db.dbQuery
-import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.selectAll
 
 class CreateAccountParams(
     val owner: String,
@@ -17,15 +18,7 @@ class ListAccountsParams(
     val offset: Int,
 )
 
-class AccountRepository(
-    database: Database
-) {
-    init {
-        transaction(database) {
-            SchemaUtils.create(Accounts)
-        }
-    }
-
+class AccountRepository {
     suspend fun create(arg: CreateAccountParams): String = dbQuery {
         Accounts.insert {
             it[owner] = arg.owner

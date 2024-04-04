@@ -3,9 +3,9 @@ package com.ermolnik.repository
 import com.ermolnik.db.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.transactions.transaction
 
 class CreateMovieParams(
+    val accountID: Int,
     val name: String,
     val posterURL: String,
 )
@@ -16,20 +16,19 @@ class ListMoviesParams(
     val offset: Int,
 )
 
-class MovieRepository(
-    database: Database
-) {
-    init {
-        transaction(database) {
-            SchemaUtils.create(Movies)
-        }
-    }
-
+class MovieRepository {
     suspend fun create(arg: CreateMovieParams): Int = dbQuery {
-        Movies.insert {
+        val newMovieID = Movies.insert {
             it[name] = arg.name
             it[posterURL] = arg.posterURL
         } get Movies.id
+
+        AccountsMovies.insert {
+            it[accountID] = arg.accountID
+            it[movieID] = newMovieID
+        }
+
+        newMovieID
     }
 
     suspend fun get(id: Int): Movie? = dbQuery {

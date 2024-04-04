@@ -15,7 +15,7 @@ class ApplicationTest {
         application {
             val db = configureDatabase()
 
-            configureRouting(db)
+            configureRouting()
         }
 
         client.get("/").apply {
