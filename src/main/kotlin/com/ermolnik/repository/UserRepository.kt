@@ -3,11 +3,8 @@ package com.ermolnik.repository
 import com.ermolnik.db.User
 import com.ermolnik.db.Users
 import com.ermolnik.db.dbQuery
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.transactions.transaction
 
 class CreateUserParams(
     val username: String,
@@ -16,15 +13,7 @@ class CreateUserParams(
     val email: String,
 )
 
-class UserRepository(
-    database: Database
-) {
-    init {
-        transaction(database) {
-            SchemaUtils.create(Users)
-        }
-    }
-
+class UserRepository {
     suspend fun create(arg: CreateUserParams): String = dbQuery {
         Users.insert {
             it[username] = arg.username

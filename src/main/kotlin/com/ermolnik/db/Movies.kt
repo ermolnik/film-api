@@ -8,9 +8,10 @@ import org.jetbrains.exposed.sql.kotlin.datetime.CurrentTimestamp
 import org.jetbrains.exposed.sql.kotlin.datetime.timestampWithTimeZone
 import java.time.OffsetDateTime
 
-object Accounts : Table("accounts") {
+object Movies : Table("movies") {
     val id = integer("id").autoIncrement()
-    val owner = reference("owner", Users.username)
+    val name = varchar("name", 255)
+    val posterURL = varchar("poster_url", 255)
     val createdAt = timestampWithTimeZone("created_at")
         .defaultExpression(CurrentTimestamp())
 
@@ -18,12 +19,15 @@ object Accounts : Table("accounts") {
 }
 
 @Serializable
-data class Account(
+data class Movie(
     @SerialName("id")
     val id: Int,
 
-    @SerialName("owner")
-    val owner: String,
+    @SerialName("name")
+    val name: String,
+
+    @SerialName("poster_url")
+    val posterURL: String,
 
     @SerialName("created_at")
     @Serializable(with = KOffsetDateTimeSerializer::class)

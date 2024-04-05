@@ -1,4 +1,4 @@
-package com.ermolnik.core.plugins
+package com.ermolnik.api
 
 import io.ktor.server.application.*
 import io.ktor.server.plugins.swagger.*
