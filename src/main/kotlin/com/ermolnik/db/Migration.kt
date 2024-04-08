@@ -12,6 +12,8 @@ fun Application.migrateDatabase() {
             Movies,
             AccountsMoviesToWatch,
             AccountsMovies,
+            Actors,
+            MoviesActors,
         )
     }
 }
