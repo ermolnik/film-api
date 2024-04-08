@@ -86,5 +86,9 @@ class MovieRepository {
         AccountsMovies.deleteWhere {
             AccountsMovies.movieID eq id
         }
+
+        MovieDetails.deleteWhere {
+            MovieDetails.movieID eq id
+        }
     }
 }
