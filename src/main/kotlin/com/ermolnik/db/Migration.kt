@@ -6,7 +6,8 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Application.migrateDatabase() {
     transaction {
-        SchemaUtils.create(
+
+       SchemaUtils.createMissingTablesAndColumns(
             Users,
             Accounts,
             Movies,

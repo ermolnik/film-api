@@ -9,8 +9,6 @@ import io.ktor.server.application.*
 fun Application.configureRouting() {
     usersApi()
     accountsApi()
-
     moviesApi()
-
     staticApi()
 }
