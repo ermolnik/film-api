@@ -9,7 +9,8 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 
-const val API_KEY = ""
+const val API_KEY =
+    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YThmMmRmMDkyYzMxMDI1YjcwYTE1MzExNmYxYmEwOCIsInN1YiI6IjYzZDNmNjUzNDU4MTk5MDA4NGMxMTc3MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.d2wP7va3n7uHoPoKTy2Wx37S-IxsGmEaypGofF_4JE0"
 
 val client = HttpClient(CIO) {
     install(Logging) {
