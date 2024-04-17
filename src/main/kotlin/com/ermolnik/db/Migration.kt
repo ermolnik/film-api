@@ -6,8 +6,10 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Application.migrateDatabase() {
     transaction {
+        // TODO: Remove to not drop the database after we implement migrations.
+        SchemaUtils.dropDatabase()
 
-       SchemaUtils.createMissingTablesAndColumns(
+        SchemaUtils.create(
             Users,
             Accounts,
             Movies,
