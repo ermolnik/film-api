@@ -6,59 +6,38 @@ import com.ermolnik.db.dbQuery
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 
-data class CreateUserParams(
+class CreateUserParams(
     val username: String,
     val hashedPassword: String,
+    val fullName: String,
     val email: String,
-    val token: String
 )
 
 class UserRepository {
-    suspend fun create(arg: CreateUserParams): Result = dbQuery {
-        when (val result = Users.insert {
+    suspend fun create(arg: CreateUserParams): String = dbQuery {
+        Users.insert {
             it[username] = arg.username
             it[hashedPassword] = arg.hashedPassword
+            it[fullName] = arg.fullName
             it[email] = arg.email
-        }.getOrNull(Users.username)) {
-            null -> Result.Error
-            else -> Result.Success.Created(userName = result)
-        }
+        } get Users.username
     }
 
-    suspend fun findUser(username: String): Result = dbQuery {
-        try {
-            when (val result = Users.selectAll()
-                .where {
-                    Users.username eq username
-                }
-                .mapNotNull {
-                    User(
-                        userName = it[Users.username],
-                        hashedPassword = it[Users.hashedPassword],
-                        email = it[Users.email],
-                        passwordChangedAt = it[Users.passwordChangedAt],
-                        createdAt = it[Users.createdAt],
-                    )
-                }
-                .singleOrNull()) {
-                is User -> Result.Success.Found(result)
-                else -> Result.Error
+    suspend fun get(username: String): User? = dbQuery {
+        Users.selectAll()
+            .where {
+                Users.username eq username
             }
-        } catch (e: Throwable) {
-            Result.Error
-        }
-    }
-
-    sealed interface Result {
-        data object Error : Result
-        sealed interface Success : Result {
-            data class Found(
-                val user: User
-            ) : Success
-
-            data class Created(
-                val userName: String
-            ) : Success
-        }
+            .map {
+                User(
+                    username = it[Users.username],
+                    hashedPassword = it[Users.hashedPassword],
+                    fullName = it[Users.fullName],
+                    email = it[Users.email],
+                    passwordChangedAt = it[Users.passwordChangedAt],
+                    createdAt = it[Users.createdAt],
+                )
+            }
+            .singleOrNull()
     }
 }

@@ -8,6 +8,7 @@ import java.time.OffsetDateTime
 object Users : Table("users") {
     val username = varchar("username", 24)
     val hashedPassword = varchar("hashed_password", 64)
+    val fullName = varchar("full_name", 255)
     val email = varchar("email", 255)
     val passwordChangedAt = timestampWithTimeZone("password_changed_at")
         .clientDefault {
@@ -20,8 +21,9 @@ object Users : Table("users") {
 }
 
 data class User(
-    val userName: String,
+    val username: String,
     val hashedPassword: String,
+    val fullName: String,
     val email: String,
     val passwordChangedAt: OffsetDateTime,
     val createdAt: OffsetDateTime,

@@ -1,4 +1,4 @@
-package com.ermolnik.api.users.data
+package com.ermolnik.api.users
 
 import com.ermolnik.db.serializer.KOffsetDateTimeSerializer
 import kotlinx.serialization.SerialName
@@ -13,6 +13,9 @@ data class CreateUserRequest(
     @SerialName("password")
     val password: String,
 
+    @SerialName("full_name")
+    val fullName: String,
+
     @SerialName("email")
     val email: String,
 )
@@ -21,9 +24,6 @@ data class CreateUserRequest(
 data class CreateUserResponse(
     @SerialName("username")
     val username: String,
-
-    @SerialName("token")
-    val token: String
 )
 
 @Serializable
@@ -31,11 +31,11 @@ data class UserResponse(
     @SerialName("username")
     val username: String,
 
+    @SerialName("full_name")
+    val fullName: String,
+
     @SerialName("email")
     val email: String,
-
-    @SerialName("token")
-    val token: String,
 
     @SerialName("password_changed_at")
     @Serializable(with = KOffsetDateTimeSerializer::class)
@@ -47,10 +47,34 @@ data class UserResponse(
 )
 
 @Serializable
-data class UserSignInRequest(
+data class RegisterUserRequest(
+    @SerialName("username")
+    val username: String,
+
+    @SerialName("password")
+    val password: String,
+
+    @SerialName("full_name")
+    val fullName: String,
+
+    @SerialName("email")
+    val email: String,
+)
+
+@Serializable
+data class LoginUserRequest(
     @SerialName("username")
     val username: String,
 
     @SerialName("password")
     val password: String
+)
+
+@Serializable
+data class LoginUserResponse(
+    @SerialName("access_token")
+    val accessToken: String,
+
+    @SerialName("user")
+    val user: UserResponse,
 )

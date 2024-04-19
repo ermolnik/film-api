@@ -1,9 +1,6 @@
 package com.ermolnik
 
-import com.ermolnik.api.configureHTTP
-import com.ermolnik.api.configureMonitoring
-import com.ermolnik.api.configureRouting
-import com.ermolnik.api.configureSerialization
+import com.ermolnik.api.*
 import com.ermolnik.db.configureDatabase
 import com.ermolnik.db.migrateDatabase
 import io.ktor.server.application.*
@@ -18,5 +15,6 @@ fun Application.module() {
     configureMonitoring()
     configureHTTP()
 
-    configureRouting()
+    val tokenMaker = configureAuthentication()
+    configureRouting(tokenMaker)
 }
