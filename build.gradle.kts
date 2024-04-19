@@ -2,6 +2,8 @@ val kotlinVersion: String by project
 
 val ktorVersion: String by project
 
+val bcryptVersion: String by project
+
 val exposedVersion: String by project
 val h2Version: String by project
 
@@ -34,6 +36,11 @@ dependencies {
     implementation("io.ktor:ktor-server-metrics-micrometer:$ktorVersion")
     implementation("io.ktor:ktor-server-swagger-jvm")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
+
+    implementation("io.ktor:ktor-server-auth:$ktorVersion")
+    implementation("io.ktor:ktor-server-auth-jwt:$ktorVersion")
+
+    implementation("at.favre.lib:bcrypt:$bcryptVersion")
 
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")

@@ -26,5 +26,5 @@ data class User(
     val fullName: String,
     val email: String,
     val passwordChangedAt: OffsetDateTime,
-    val createdAt: OffsetDateTime
+    val createdAt: OffsetDateTime,
 )

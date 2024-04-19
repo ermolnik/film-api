@@ -4,10 +4,8 @@ import com.ermolnik.repository.MovieRepository
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 
-fun Application.moviesApi() {
+fun Route.moviesApi() {
     val movieRepository = MovieRepository()
 
-    routing {
-        // TODO: Implement routes for `/movies` endpoint.
-    }
+    // TODO: Implement routes for `/movies` endpoint.
 }

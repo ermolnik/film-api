@@ -1,0 +1,20 @@
+meta {
+  name: Create user
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "username": "kahakai",
+      "full_name": "Random Name",
+      "email": "kahakai@email.com",
+      "password": "secret"
+  }
+}

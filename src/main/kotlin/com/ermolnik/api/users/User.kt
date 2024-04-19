@@ -45,3 +45,36 @@ data class UserResponse(
     @Serializable(with = KOffsetDateTimeSerializer::class)
     val createdAt: OffsetDateTime,
 )
+
+@Serializable
+data class RegisterUserRequest(
+    @SerialName("username")
+    val username: String,
+
+    @SerialName("password")
+    val password: String,
+
+    @SerialName("full_name")
+    val fullName: String,
+
+    @SerialName("email")
+    val email: String,
+)
+
+@Serializable
+data class LoginUserRequest(
+    @SerialName("username")
+    val username: String,
+
+    @SerialName("password")
+    val password: String
+)
+
+@Serializable
+data class LoginUserResponse(
+    @SerialName("access_token")
+    val accessToken: String,
+
+    @SerialName("user")
+    val user: UserResponse,
+)
