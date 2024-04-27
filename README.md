@@ -26,9 +26,9 @@ Without a `User` entity (that is user account) a consumer of the API (either a
 user themselves or a mobile app for example) cannot interact with the API and
 perform actions and operations.
 
-`Accounts` table is intended for internal user accounts that are not unique
+`Profiles` table is intended for user representations that are not unique
 by themselves and serve for profile information.
-Without an `Account` entity (that is user profile) a consumer of the API cannot
+Without an `Profile` entity (that is user profile) a consumer of the API cannot
 interact with the API too because every consumer (`User`) has to have a profile
-(`Account`).
-`Users` and `Accounts` tables have a one-to-one relationship.
+(`Profile`).
+`Users` and `Profiles` tables have a one-to-one relationship.

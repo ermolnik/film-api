@@ -11,10 +11,10 @@ fun Application.migrateDatabase() {
 
         SchemaUtils.create(
             Users,
-            Accounts,
+            Profiles,
             Movies,
-            AccountsMoviesToWatch,
-            AccountsMovies,
+            ProfilesMoviesToWatch,
+            ProfilesMovies,
             Actors,
             MoviesActors,
         )

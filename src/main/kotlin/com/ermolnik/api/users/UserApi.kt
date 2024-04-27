@@ -14,31 +14,8 @@ import io.ktor.server.routing.*
 fun Route.usersApi(tokenMaker: JWTMaker) {
     val userRepository = UserRepository()
 
-    createUser(userRepository)
     registerUser(userRepository)
     loginUser(userRepository, tokenMaker)
-}
-
-private fun Route.createUser(userRepository: UserRepository) {
-    post("/users") {
-        val req = call.receive<CreateUserRequest>()
-
-        val hashedPassword = hashPassword(req.password)
-
-        val arg = CreateUserParams(
-            username = req.username,
-            hashedPassword = hashedPassword,
-            fullName = req.fullName,
-            email = req.email,
-        )
-
-        val user = userRepository.create(arg)
-
-        val resp = CreateUserResponse(
-            username = user,
-        )
-        call.respond(HttpStatusCode.Created, resp)
-    }
 }
 
 private fun Route.registerUser(userRepository: UserRepository) {
