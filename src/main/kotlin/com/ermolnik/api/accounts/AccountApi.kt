@@ -13,7 +13,13 @@ import io.ktor.server.util.*
 fun Route.accountsApi() {
     val accountRepository = AccountRepository()
 
-    // Create account
+    createAccount(accountRepository)
+    getAccount(accountRepository)
+    listAccounts(accountRepository)
+    deleteAccount(accountRepository)
+}
+
+private fun Route.createAccount(accountRepository: AccountRepository) {
     post("/accounts") {
         val req = call.receive<CreateAccountRequest>()
 
@@ -28,8 +34,9 @@ fun Route.accountsApi() {
         )
         call.respond(HttpStatusCode.Created, resp)
     }
+}
 
-    // Get account
+private fun Route.getAccount(accountRepository: AccountRepository) {
     get("/accounts/{id}") {
         val id = call.parameters
             .getOrFail("id")
@@ -45,8 +52,9 @@ fun Route.accountsApi() {
 
         call.respond(HttpStatusCode.OK, account)
     }
+}
 
-    // List accounts
+private fun Route.listAccounts(accountRepository: AccountRepository) {
     get("/accounts") {
         val req = with(call.request.queryParameters) {
             val owner = getOrFail("owner")
@@ -72,8 +80,9 @@ fun Route.accountsApi() {
 
         call.respond(HttpStatusCode.OK, accounts)
     }
+}
 
-    // Delete account
+private fun Route.deleteAccount(accountRepository: AccountRepository) {
     delete("/accounts/{id}") {
         val id = call.parameters
             .getOrFail("id")

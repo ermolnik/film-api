@@ -14,7 +14,12 @@ import io.ktor.server.routing.*
 fun Route.usersApi(tokenMaker: JWTMaker) {
     val userRepository = UserRepository()
 
-    // Create user
+    createUser(userRepository)
+    registerUser(userRepository)
+    loginUser(userRepository, tokenMaker)
+}
+
+private fun Route.createUser(userRepository: UserRepository) {
     post("/users") {
         val req = call.receive<CreateUserRequest>()
 
@@ -34,8 +39,9 @@ fun Route.usersApi(tokenMaker: JWTMaker) {
         )
         call.respond(HttpStatusCode.Created, resp)
     }
+}
 
-    // Register user
+private fun Route.registerUser(userRepository: UserRepository) {
     post("/users/register") {
         // TODO: Implement request validation with the RequestValidation plugin.
         val req = call.receive<RegisterUserRequest>()
@@ -57,8 +63,12 @@ fun Route.usersApi(tokenMaker: JWTMaker) {
         )
         call.respond(HttpStatusCode.OK, resp)
     }
+}
 
-    // Login user
+private fun Route.loginUser(
+    userRepository: UserRepository,
+    tokenMaker: JWTMaker,
+) {
     post("/users/login") {
         // TODO: Implement request validation with the RequestValidation plugin.
         val req = call.receive<LoginUserRequest>()
