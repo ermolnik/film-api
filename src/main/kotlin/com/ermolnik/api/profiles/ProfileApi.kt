@@ -16,7 +16,7 @@ fun Route.profilesApi() {
     createProfile(profileRepository)
     getProfile(profileRepository)
     listProfiles(profileRepository)
-    deleteProfiles(profileRepository)
+    deleteProfile(profileRepository)
 }
 
 private fun Route.createProfile(profileRepository: ProfileRepository) {
@@ -82,7 +82,7 @@ private fun Route.listProfiles(profileRepository: ProfileRepository) {
     }
 }
 
-private fun Route.deleteProfiles(profileRepository: ProfileRepository) {
+private fun Route.deleteProfile(profileRepository: ProfileRepository) {
     delete("/profiles/{id}") {
         val id = call.parameters
             .getOrFail("id")

@@ -13,8 +13,8 @@ fun Application.migrateDatabase() {
             Users,
             Profiles,
             Movies,
-            ProfilesMoviesToWatch,
-            ProfilesMovies,
+            UsersMoviesToWatch,
+            UsersMovies,
             Actors,
             MoviesActors,
         )

@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 
 class CreateMovieParams(
-    val profileID: Int,
+    val username: String,
     val name: String,
     val posterURL: String,
 )
@@ -23,8 +23,8 @@ class MovieRepository {
             it[posterURL] = arg.posterURL
         } get Movies.id
 
-        ProfilesMovies.insert {
-            it[profileID] = arg.profileID
+        UsersMovies.insert {
+            it[username] = arg.username
             it[movieID] = newMovieID
         }
 
@@ -49,22 +49,22 @@ class MovieRepository {
 
     suspend fun list(arg: ListMoviesParams): List<Movie> = dbQuery {
         val moviesTable = Movies.alias("m")
-        val profilesTable = Profiles.alias("p")
+        val usersTable = Users.alias("u")
 
-        ProfilesMovies
+        UsersMovies
             .innerJoin(
                 moviesTable,
-                onColumn = { ProfilesMovies.movieID },
+                onColumn = { UsersMovies.movieID },
                 otherColumn = { moviesTable[Movies.id] },
             )
             .innerJoin(
-                profilesTable,
-                onColumn = { ProfilesMovies.profileID },
-                otherColumn = { profilesTable[Profiles.id] },
+                usersTable,
+                onColumn = { UsersMovies.username },
+                otherColumn = { usersTable[Users.username] },
             )
             .selectAll()
             .where {
-                Profiles.owner eq arg.owner
+                Users.username eq arg.owner
             }
             .orderBy(Movies.id)
             .limit(arg.limit, offset = arg.offset.toLong())
@@ -83,8 +83,8 @@ class MovieRepository {
             Movies.id eq id
         }
 
-        ProfilesMovies.deleteWhere {
-            ProfilesMovies.movieID eq id
+        UsersMovies.deleteWhere {
+            UsersMovies.movieID eq id
         }
 
         MovieDetails.deleteWhere {
