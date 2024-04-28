@@ -1,28 +1,28 @@
-package com.ermolnik.api.accounts
+package com.ermolnik.api.profiles
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CreateAccountRequest(
+data class CreateProfileRequest(
     @SerialName("owner")
     val owner: String,
 )
 
 @Serializable
-data class CreateAccountResponse(
+data class CreateProfileResponse(
     @SerialName("owner")
     val owner: String,
 )
 
 @Serializable
-data class GetAccountRequest(
+data class GetProfileRequest(
     @SerialName("id")
     val id: Int,
 )
 
 @Serializable
-data class ListAccountRequest(
+data class ListProfileRequest(
     @SerialName("owner")
     val owner: String,
 
@@ -34,7 +34,7 @@ data class ListAccountRequest(
 )
 
 @Serializable
-data class DeleteAccountRequest(
+data class DeleteProfileRequest(
     @SerialName("id")
     val id: Int,
 )
