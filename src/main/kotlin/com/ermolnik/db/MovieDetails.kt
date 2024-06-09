@@ -3,6 +3,7 @@ package com.ermolnik.db
 import com.ermolnik.db.serializer.KOffsetDateTimeSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import org.jetbrains.exposed.sql.ReferenceOption
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.kotlin.datetime.CurrentTimestamp
 import org.jetbrains.exposed.sql.kotlin.datetime.timestampWithTimeZone
@@ -10,7 +11,7 @@ import java.time.OffsetDateTime
 
 object MovieDetails : Table("movie_details") {
     val id = integer("id").autoIncrement()
-    val movieID = reference("movie_id", Movies.id)
+    val movieID = reference("movie_id", Movies.id, onDelete = ReferenceOption.CASCADE)
     val description = text("description")
     val genre = varchar("genre", 255)
     val pegi = integer("pegi")

@@ -80,9 +80,5 @@ class ActorRepository {
         Actors.deleteWhere {
             Actors.id eq id
         }
-
-        MoviesActors.deleteWhere {
-            MoviesActors.actorID eq id
-        }
     }
 }
