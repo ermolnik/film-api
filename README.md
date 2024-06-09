@@ -31,4 +31,5 @@ by themselves and serve for profile information.
 Without an `Profile` entity (that is user profile) a consumer of the API cannot
 interact with the API too because every consumer (`User`) has to have a profile
 (`Profile`).
+
 `Users` and `Profiles` tables have a one-to-one relationship.
